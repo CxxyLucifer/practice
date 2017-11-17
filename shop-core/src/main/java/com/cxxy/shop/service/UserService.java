@@ -13,7 +13,13 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
+
     public List<User> getUserList() throws Exception{
         return  userRepository.findAll();
+    }
+
+    public Long addUser(User user) throws Exception{
+        userRepository.save(user);
+        return user.getUser_id();
     }
 }
