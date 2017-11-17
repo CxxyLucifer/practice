@@ -20,13 +20,13 @@ import java.io.Serializable;
 public class User implements Serializable{
 
     @Id
-    @Column(name = "userId")
+    @Column
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long userId;
+    private Long user_id;
 
-    @Column(name = "userName")
-    private String userName;
+    @Column
+    private String user_name;
 
-    @Column(name = "password")
+    @Column
     private String password;
 }
