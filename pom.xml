@@ -17,6 +17,7 @@
     <modules>
         <module>shop-core</module>
         <module>shop-web</module>
+        <module>shop-common</module>
     </modules>
 
     <properties>
@@ -34,10 +35,14 @@
             <!-- 子模块 -->
             <dependency>
                 <groupId>com.cxxy</groupId>
+                <artifactId>shop-common</artifactId>
+                <version>${shop.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.cxxy</groupId>
                 <artifactId>shop-core</artifactId>
                 <version>${shop.version}</version>
             </dependency>
-
             <dependency>
                 <groupId>com.cxxy</groupId>
                 <artifactId>shop-web</artifactId>

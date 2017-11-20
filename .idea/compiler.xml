@@ -6,6 +6,7 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="shop-common" />
         <module name="shop-core" />
         <module name="shop-web" />
       </profile>
@@ -13,6 +14,7 @@
     <bytecodeTargetLevel>
       <module name="shop" target="1.8" />
       <module name="shop-bean" target="1.8" />
+      <module name="shop-common" target="1.8" />
       <module name="shop-core" target="1.8" />
       <module name="shop-dao" target="1.8" />
       <module name="shop-web" target="1.8" />

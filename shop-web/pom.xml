@@ -16,6 +16,11 @@
 	<name>shop-web</name>
 
 	<dependencies>
+
+		<dependency>
+			<groupId>com.cxxy</groupId>
+			<artifactId>shop-common</artifactId>
+		</dependency>
 		<dependency>
 			<groupId>com.cxxy</groupId>
 			<artifactId>shop-core</artifactId>
