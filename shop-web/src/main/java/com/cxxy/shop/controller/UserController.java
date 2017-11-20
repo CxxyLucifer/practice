@@ -63,4 +63,20 @@ public class UserController extends BaseController{
 
         return ResponseBuilder.toPageResponse(page);
     }
+
+
+    /**
+     * http://127.0.0.1:8080/user/getUserListByName?pageNum=1&UserName=name 直接调用
+     *
+     * @param userParam
+     * @return
+     * @throws Exception
+     */
+    @RequestMapping(value = "getUserListByName", method = RequestMethod.GET)
+    public Object getUserListByName(@Valid UserParam userParam) throws Exception{
+
+        Page<User> page = userService.getUserList(userParam.getUserName(),userParam.getPageNum(),userParam.getPageSize());
+
+        return ResponseBuilder.toPageResponse(page);
+    }
 }

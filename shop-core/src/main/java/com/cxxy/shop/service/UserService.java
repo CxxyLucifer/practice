@@ -29,4 +29,17 @@ public class UserService {
     public Page<User> getUserList(Example<User> example, int pageNum, int pageSize) throws Exception{
         return  userRepository.findAll(example,new PageRequest(pageNum,pageSize));
     }
+
+    /**
+     * 根据userName进行分页模糊查询
+     *
+     * @param userName
+     * @param pageNum
+     * @param pageSize
+     * @return
+     * @throws Exception
+     */
+    public Page<User> getUserList(String userName, int pageNum, int pageSize) throws Exception{
+        return  userRepository.getUserList(userName,new PageRequest(pageNum,pageSize));
+    }
 }
