@@ -31,15 +31,15 @@ public class UserService {
     }
 
     /**
-     * 根据userName进行分页模糊查询
-     *
-     * @param userName
+     * 分页查询用户信息
+     * @param userName  用户名称，模糊匹配
+     * @param className 班级名称，匹配
      * @param pageNum
      * @param pageSize
      * @return
      * @throws Exception
      */
-    public Page<User> getUserList(String userName, int pageNum, int pageSize) throws Exception{
-        return  userRepository.getUserList(userName,new PageRequest(pageNum,pageSize));
+    public Page<User> getUserList(String userName,String className, int pageNum, int pageSize) throws Exception{
+        return  userRepository.getUserList( userName, className, new PageRequest( pageNum, pageSize));
     }
 }

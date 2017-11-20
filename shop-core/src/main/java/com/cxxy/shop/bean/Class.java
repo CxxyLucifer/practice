@@ -7,27 +7,23 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.io.Serializable;
 
+/**
+ * Author:liuhui
+ * Description:
+ * Date: 下午4:44 2017/11/20
+ */
 @Data
 @Entity
-@Table(name = "t_user")
+@Table(name = "t_class")
 @NoArgsConstructor
 @AllArgsConstructor
-public class User implements Serializable{
+public class Class implements Serializable {
 
     @Id
     @Column
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long user_id;
-
-    @Column
-    private String user_name;
-
-    @Column
-    private String password;
-
-    @Column
     private Long class_id;
 
-    @Transient
+    @Column
     private String class_name;
 }

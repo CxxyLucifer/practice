@@ -15,12 +15,16 @@ import javax.validation.constraints.Size;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class UserParam extends BasicForm{
 
-    @NotNull(message = "用户名不能为空",groups = {Create.class})
-    @Size(min = 4, max = 20, message = "用户名必须大于4小于20")
-    private String UserName;
+    @NotNull(message = "用户名不能为空",groups = {Create.class,Modify.class})
+    @Size(min = 4, max = 20, message = "用户名必须大于4小于20",groups = {Create.class,Modify.class})
+    private String userName;
 
-    @Pattern(regexp = ValidUtil.MOBILE, message = "手机号码格式不正确", groups ={Create.class})
+    @Pattern(regexp = ValidUtil.MOBILE, message = "手机号码格式不正确", groups ={Create.class,Modify.class})
     private String mobile;
 
+    private String className;
+
     public interface Create {}
+    public interface Modify {}
+    public interface Query {}
 }

@@ -15,9 +15,9 @@
     <version>1.0-SNAPSHOT</version>
 
     <modules>
+        <module>shop-common</module>
         <module>shop-core</module>
         <module>shop-web</module>
-        <module>shop-common</module>
     </modules>
 
     <properties>
@@ -96,14 +96,6 @@
                 <version>1.16.18</version>
             </dependency>
 
-            <!--devtools-->
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-devtools</artifactId>
-                <version>${springboot.version}</version>
-                <optional>true</optional>
-            </dependency>
-
             <!-- JSR 303 with Hibernate Validator -->
             <dependency>
                 <groupId>javax.validation</groupId>
@@ -116,16 +108,42 @@
                 <version>5.2.4.Final</version>
             </dependency>
 
+            <!-- SpringUtils.isEmpty() -->
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>3.7</version>
+            </dependency>
+
+            <!-- junit -->
             <dependency>
                 <groupId>junit</groupId>
                 <artifactId>junit</artifactId>
                 <version>4.12</version>
                 <scope>test</scope>
             </dependency>
+
+            <!-- devtools -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-devtools</artifactId>
+                <version>${springboot.version}</version>
+                <optional>true</optional>
+            </dependency>
         </dependencies>
     </dependencyManagement>
     <build>
         <plugins>
+            <!-- 开发时打开下面的注释，可实现热更新 -->
+            <!--<plugin>-->
+                <!--<groupId>org.springframework.boot</groupId>-->
+                <!--<artifactId>spring-boot-maven-plugin</artifactId>-->
+                <!--<version>${springboot.version}</version>-->
+                <!--<configuration>-->
+                    <!--<fork>true</fork>-->
+                <!--</configuration>-->
+            <!--</plugin>-->
+
             <!-- 生成源码插件 -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
