@@ -2,6 +2,7 @@ package com.cxxy.shop.service;
 
 import com.cxxy.shop.repository.UserRepository;
 import com.cxxy.shop.bean.User;
+import com.cxxy.shop.dto.UserDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Page;
@@ -39,7 +40,7 @@ public class UserService {
      * @return
      * @throws Exception
      */
-    public Page<User> getUserList(String userName,String className, int pageNum, int pageSize) throws Exception{
+    public Page<UserDto> getUserList(String userName, String className, int pageNum, int pageSize) throws Exception{
         return  userRepository.getUserList( userName, className, new PageRequest( pageNum, pageSize));
     }
 }

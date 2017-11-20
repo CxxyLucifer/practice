@@ -1,4 +1,4 @@
-package com.cxxy.shop.result;
+package com.cxxy.shop.dto;
 
 import com.cxxy.shop.response.CentreCutPageResponse;
 import lombok.Getter;

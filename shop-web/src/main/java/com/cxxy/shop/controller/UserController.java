@@ -4,6 +4,7 @@ import com.cxxy.shop.bean.User;
 import com.cxxy.shop.builder.ResponseBuilder;
 import com.cxxy.shop.param.UserParam;
 import com.cxxy.shop.response.Response;
+import com.cxxy.shop.dto.UserDto;
 import com.cxxy.shop.service.UserService;
 import com.cxxy.shop.util.MD5Util;
 import org.apache.commons.lang3.StringUtils;
@@ -67,6 +68,8 @@ public class UserController extends BaseController{
 
 
     /**
+     * 根据用户名和班级查询UserList
+     *
      * http://127.0.0.1:8080/user/getUserListByName?pageNum=2&UserName=&className=
      *
      * @param userParam
@@ -82,7 +85,7 @@ public class UserController extends BaseController{
         if(StringUtils.isBlank(userParam.getUserName())){
             userParam.setUserName(null);
         }
-        Page<User> page = userService.getUserList(userParam.getUserName(),userParam.getClassName(),userParam.getPageNum(),userParam.getPageSize());
+        Page<UserDto> page = userService.getUserList(userParam.getUserName(),userParam.getClassName(),userParam.getPageNum(),userParam.getPageSize());
 
         return ResponseBuilder.toPageResponse(page);
     }
