@@ -1,6 +1,6 @@
 package com.cxxy.shop.response;
 
-import com.cxxy.shop.dto.QueryResult;
+import com.cxxy.shop.result.QueryResult;
 
 import java.util.ArrayList;
 import java.util.Collection;
