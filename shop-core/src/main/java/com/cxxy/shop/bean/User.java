@@ -19,7 +19,7 @@ public class User implements Serializable{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long user_id;
 
-    @Column
+    @Column(unique = true)
     private String user_name;
 
     @Column
@@ -31,4 +31,13 @@ public class User implements Serializable{
     @ManyToOne
     @JoinColumn(name = "class_id",referencedColumnName = "class_id",insertable = false,updatable = false)
     private SClass sClass;
+
+
+    public User(Long user_id,String user_name,Long class_id,SClass sClass){
+        super();
+        this.user_id = user_id;
+        this.user_name = user_name;
+        this.class_id = class_id;
+        this.sClass = sClass;
+    }
 }

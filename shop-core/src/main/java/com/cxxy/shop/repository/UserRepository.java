@@ -13,7 +13,7 @@ import java.util.Map;
 @Repository
 public interface UserRepository extends JpaRepository<User,Long> {
 
-    @Query("SELECT u from User u where u.user_id = :user_id")
+    @Query("SELECT new User(u.user_id,u.user_name,u.class_id,u.sClass) from User u where u.user_id = :user_id")
     User getById(@Param("user_id")Long user_id);
 
 
