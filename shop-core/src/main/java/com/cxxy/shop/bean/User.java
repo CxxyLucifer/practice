@@ -28,6 +28,7 @@ public class User implements Serializable{
     @Column
     private Long class_id;
 
-    @Transient
-    private String class_name;
+    @ManyToOne
+    @JoinColumn(name = "class_id",referencedColumnName = "class_id",insertable = false,updatable = false)
+    private SClass sClass;
 }

@@ -3,10 +3,11 @@ package com.cxxy.shop.bean;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.boot.jackson.JsonComponent;
 
 import javax.persistence.*;
 import java.io.Serializable;
-
+import java.util.List;
 /**
  * Author:liuhui
  * Description:
@@ -17,7 +18,7 @@ import java.io.Serializable;
 @Table(name = "t_class")
 @NoArgsConstructor
 @AllArgsConstructor
-public class Class implements Serializable {
+public class SClass implements Serializable {
 
     @Id
     @Column

@@ -2,7 +2,6 @@ package com.cxxy.shop.service;
 
 import com.cxxy.shop.repository.UserRepository;
 import com.cxxy.shop.bean.User;
-import com.cxxy.shop.dto.UserDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Page;
@@ -10,17 +9,13 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class UserService {
 
     @Autowired
     private UserRepository userRepository;
-
-
-    public List<User> getUserList() throws Exception{
-        return  userRepository.findAll();
-    }
 
     public Long addUser(User user) throws Exception{
         userRepository.save(user);
@@ -40,7 +35,18 @@ public class UserService {
      * @return
      * @throws Exception
      */
-    public Page<UserDto> getUserList(String userName, String className, int pageNum, int pageSize) throws Exception{
+    public Page<Map<String, Object>> getUserList(String userName, String className, int pageNum, int pageSize) throws Exception{
         return  userRepository.getUserList( userName, className, new PageRequest( pageNum, pageSize));
+    }
+
+
+    /**
+     * 查询详情
+     * @param user_id
+     * @return
+     * @throws Exception
+     */
+    public User getById(Long user_id) throws Exception{
+        return userRepository.getById(user_id);
     }
 }

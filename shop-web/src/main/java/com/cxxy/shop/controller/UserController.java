@@ -4,7 +4,6 @@ import com.cxxy.shop.bean.User;
 import com.cxxy.shop.builder.ResponseBuilder;
 import com.cxxy.shop.param.UserParam;
 import com.cxxy.shop.response.Response;
-import com.cxxy.shop.dto.UserDto;
 import com.cxxy.shop.service.UserService;
 import com.cxxy.shop.util.MD5Util;
 import org.apache.commons.lang3.StringUtils;
@@ -29,13 +28,6 @@ public class UserController extends BaseController{
     @Autowired
     private UserService userService;
 
-    @RequestMapping(value = "/getAllUser", method = RequestMethod.GET)
-    public Object getAllUser() throws Exception{
-        List<User> users = userService.getUserList();
-
-        return Response.toListResponse(users);
-    }
-
     @RequestMapping(value = "/addUsers", method = RequestMethod.POST)
     public Object addUsers(@Validated(UserParam.Create.class) UserParam userParam) throws Exception{
         Map<String,Object> result = new HashMap<>();
@@ -52,7 +44,7 @@ public class UserController extends BaseController{
     }
 
 
-    @RequestMapping(value = "getUserListByPage", method = RequestMethod.POST)
+    @RequestMapping(value = "getUserListByPage")
     public Object getUserListByPage(@Valid UserParam userParam) throws Exception{
 
         User user = new User();
@@ -76,7 +68,7 @@ public class UserController extends BaseController{
      * @return
      * @throws Exception
      */
-    @RequestMapping(value = "getUserListByName", method = RequestMethod.GET)
+    @RequestMapping(value = "getUserListByName")
     public Object getUserListByName(@Validated(UserParam.Query.class) UserParam userParam) throws Exception{
 
         if(StringUtils.isBlank(userParam.getClassName())){
@@ -85,8 +77,25 @@ public class UserController extends BaseController{
         if(StringUtils.isBlank(userParam.getUserName())){
             userParam.setUserName(null);
         }
-        Page<UserDto> page = userService.getUserList(userParam.getUserName(),userParam.getClassName(),userParam.getPageNum(),userParam.getPageSize());
+        Page<Map<String, Object>> page = userService.getUserList(userParam.getUserName(),userParam.getClassName(),userParam.getPageNum(),userParam.getPageSize());
 
         return ResponseBuilder.toPageResponse(page);
+    }
+
+    /**
+     * 查询用户详情
+     *
+     * http://127.0.0.1:8080/user/getUserById?user_id=11
+     *
+     * @param userParam
+     * @return
+     * @throws Exception
+     */
+    @RequestMapping(value = "getUserById")
+    public Object getUserById(@Validated(UserParam.Query.class) UserParam userParam) throws Exception{
+
+        User user = userService.getById(userParam.getUser_id());
+
+        return Response.toResponse(user);
     }
 }

@@ -15,6 +15,8 @@ import javax.validation.constraints.Size;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class UserParam extends BasicForm{
 
+    private Long user_id;
+
     @NotNull(message = "用户名不能为空",groups = {Create.class,Modify.class})
     @Size(min = 4, max = 20, message = "用户名必须大于4小于20",groups = {Create.class,Modify.class})
     private String userName;
