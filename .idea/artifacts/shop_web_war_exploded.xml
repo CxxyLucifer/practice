@@ -34,6 +34,8 @@
           <element id="library" level="project" name="Maven: org.springframework:spring-aspects:4.3.12.RELEASE" />
           <element id="library" level="project" name="Maven: mysql:mysql-connector-java:8.0.8-dmr" />
           <element id="library" level="project" name="Maven: org.projectlombok:lombok:1.16.18" />
+          <element id="library" level="project" name="Maven: commons-codec:commons-codec:1.10" />
+          <element id="library" level="project" name="Maven: com.alibaba:fastjson:1.2.12" />
           <element id="library" level="project" name="Maven: org.springframework.boot:spring-boot-starter-jdbc:1.5.8.RELEASE" />
           <element id="library" level="project" name="Maven: org.apache.tomcat:tomcat-jdbc:8.5.23" />
           <element id="library" level="project" name="Maven: org.apache.tomcat:tomcat-juli:8.5.23" />
