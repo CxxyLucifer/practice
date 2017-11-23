@@ -24,7 +24,7 @@ public interface UserRepository extends JpaRepository<User,Long> {
             "FROM User u,SClass c " +
             "WHERE u.class_id = c.class_id " +
             "and (:userName is null or u.user_name like CONCAT('%',:userName,'%')) " +
-            "and (:className is null or c.class_name = :className)" +
+            "and (:className is null or c.class_name = :className) " +
             "order by u.user_id asc"
     )
     Page<Map<String, Object>> getUserList(@Param("userName") String userName,
