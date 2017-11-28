@@ -54,7 +54,7 @@ public class Response {
      */
     public static <T, V> CentreListResponse<V> toListResponse(List<T> result, ResponseConverter<T, V> converter) {
         final CentreListResponse<V> response = new CentreListResponse<>();
-        response.setDataList(convert(result, converter));
+        response.setData(convert(result, converter));
         return response;
     }
 
@@ -83,7 +83,7 @@ public class Response {
      */
     public static <V> CentreListResponse<V> toListResponse(List<V> result) {
         final CentreListResponse<V> response = new CentreListResponse<>();
-        response.setDataList(emptyIfNull(result));
+        response.setData(emptyIfNull(result));
         return response;
     }
 
@@ -95,7 +95,7 @@ public class Response {
      * @return {@link CentreListResponse}
      */
     public static <S, T> CentreListResponse<T> toListResponse(final CentreListResponse<S> source, final ResponseConverter<S, T> converter) {
-        return null != source ? toListResponse(source.getDataList(), converter) : new CentreListResponse<T>();
+        return null != source ? toListResponse(source.getData(), converter) : new CentreListResponse<T>();
     }
 
     private static <T> List<T> emptyIfNull(final List<T> collection) {
@@ -132,7 +132,7 @@ public class Response {
         response.setPageNum(pageNum);
         response.setPageSize(pageSize);
         response.setTotalCount(totalCount);
-        response.setDataList(convert(result, converter));
+        response.setData(convert(result, converter));
         return response;
     }
 
@@ -164,7 +164,7 @@ public class Response {
         response.setPageNum(pageNum);
         response.setPageSize(pageSize);
         response.setTotalCount(totalCount);
-        response.setDataList(emptyIfNull(result));
+        response.setData(emptyIfNull(result));
         return response;
     }
 
@@ -184,7 +184,7 @@ public class Response {
         response.setTotalPages(totalPage);
         response.setPageSize(pageSize);
         response.setTotalCount(totalCount);
-        response.setDataList(emptyIfNull(result));
+        response.setData(emptyIfNull(result));
         return response;
     }
 
@@ -197,7 +197,7 @@ public class Response {
      */
     public static <S, T> CentreCutPageResponse<T> toPageResponse(final CentreCutPageResponse<S> source, final ResponseConverter<S, T> converter) {
         return null != source ?
-                toPageResponse(source.getPageNum(), source.getPageSize(), source.getTotalCount(), source.getDataList(), converter) :
+                toPageResponse(source.getPageNum(), source.getPageSize(), source.getTotalCount(), source.getData(), converter) :
                 new CentreCutPageResponse<T>();
     }
 }

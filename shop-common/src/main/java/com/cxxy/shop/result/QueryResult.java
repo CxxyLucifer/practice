@@ -24,7 +24,7 @@ public class QueryResult<T> {
         response.setPageNum(pageNum);
         response.setPageSize(pageSize);
         response.setTotalCount(totalCount);
-        response.setDataList(dataList);
+        response.setData(dataList);
     }
 
     public QueryResult(int pageSize, int pageNum) {

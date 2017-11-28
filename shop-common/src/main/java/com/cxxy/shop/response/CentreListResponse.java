@@ -8,19 +8,13 @@ public class CentreListResponse<T> implements Serializable{
     /**
      * 记录列表;
      */
-    private List<T> dataList;
+    private List<T> data;
 
-    /**
-     * @return the dataList
-     */
-    public List<T> getDataList() {
-        return dataList;
+    public List<T> getData() {
+        return data;
     }
 
-    /**
-     * @param dataList the dataList to set
-     */
-    public void setDataList(List<T> dataList) {
-        this.dataList = dataList;
+    public void setData(List<T> data) {
+        this.data = data;
     }
 }
