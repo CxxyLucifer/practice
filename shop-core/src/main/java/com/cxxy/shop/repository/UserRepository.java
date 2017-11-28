@@ -17,7 +17,7 @@ public interface UserRepository extends JpaRepository<User,Long> {
     User getById(@Param("user_id")Long user_id);
 
 
-    @Query("SELECT u.user_id as user_id," +
+    @Query("SELECT u.user_id as key," +
             "u.user_name as user_name," +
             "u.class_id as class_id," +
             "c.class_name as class_name " +
