@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -102,7 +101,7 @@ public class UserController extends BaseController{
         if(StringUtils.isBlank(userParam.getUserName())){
             userParam.setUserName(null);
         }
-        Page<User> page = userService.getUserListByJoin(userParam.getUserName(),userParam.getClassName(),userParam.getPageNum(),userParam.getPageSize());
+        Page<Map<String, Object>> page = userService.getUserListByJoin(userParam.getUserName(),userParam.getClassName(),userParam.getPageNum(),userParam.getPageSize());
 
         return ResponseBuilder.toPageResponse(page);
     }
@@ -120,7 +119,7 @@ public class UserController extends BaseController{
     @RequestMapping(value = "getUserById")
     public Object getUserById(@Validated(UserParam.Query.class) UserParam userParam) throws Exception{
 
-        User user = userService.getById(userParam.getUser_id());
+        Map<String, Object> user = userService.getById(userParam.getUser_id());
 
         return Response.toResponse(user);
     }

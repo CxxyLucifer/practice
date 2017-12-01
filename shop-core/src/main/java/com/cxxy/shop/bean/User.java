@@ -32,12 +32,6 @@ public class User implements Serializable{
     @JoinColumn(name = "class_id",referencedColumnName = "class_id",insertable = false,updatable = false)
     private SClass sClass;
 
-
-    public User(Long user_id,String user_name,Long class_id,SClass sClass){
-        super();
-        this.user_id = user_id;
-        this.user_name = user_name;
-        this.class_id = class_id;
-        this.sClass = sClass;
-    }
+    @Transient
+    private String class_name;
 }

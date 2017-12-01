@@ -14,8 +14,12 @@ import java.util.List;
 @Repository
 public interface UserRepository extends JpaRepository<User,Long> {
 
-    @Query("SELECT new User(u.user_id,u.user_name,u.class_id,u.sClass) from User u where u.user_id = :user_id")
-    User getById(@Param("user_id")Long user_id);
+    @Query("SELECT u.user_id as key," +
+            "u.user_name as user_name," +
+            "u.class_id as class_id," +
+            "sc.class_name as class_name  " +
+            "from User u LEFT JOIN u.sClass sc where u.user_id = :user_id")
+    Map<String, Object> getById(@Param("user_id")Long user_id);
 
 
     @Query("SELECT u.user_id as key," +
@@ -35,14 +39,18 @@ public interface UserRepository extends JpaRepository<User,Long> {
 
     //SELECT u FROM User u LEFT JOIN FETCH u.emails e WHERE e.address LIKE'%.%@openhome.cc'
 
-    @Query("SELECT new User(u.user_id,u.user_name,u.class_id,u.sClass) FROM User u LEFT JOIN u.sClass sc " +
+    @Query("SELECT u.user_id as key," +
+            "u.user_name as user_name," +
+            "u.class_id as class_id," +
+            "sc.class_name as class_name  " +
+            "FROM User u LEFT JOIN u.sClass sc " +
             "WHERE (:userName is null or u.user_name like CONCAT('%',:userName,'%')) " +
             "and (:className is null or sc.class_name = :className) " +
             "order by u.user_id asc"
     )
-    Page<User> getUserListByJoin(@Param("userName") String userName,
-                                       @Param("className") String className,
-                                       Pageable pageable);
+    Page<Map<String, Object>> getUserListByJoin(@Param("userName") String userName,
+                                                @Param("className") String className,
+                                                Pageable pageable);
 
 
 }

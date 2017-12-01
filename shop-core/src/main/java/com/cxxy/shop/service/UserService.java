@@ -49,7 +49,7 @@ public class UserService {
      * @return
      * @throws Exception
      */
-    public Page<User> getUserListByJoin(String userName, String className, int pageNum, int pageSize) throws Exception{
+    public Page<Map<String, Object>> getUserListByJoin(String userName, String className, int pageNum, int pageSize) throws Exception{
         return  userRepository.getUserListByJoin( userName, className, new PageRequest( pageNum, pageSize));
     }
 
@@ -59,7 +59,7 @@ public class UserService {
      * @return
      * @throws Exception
      */
-    public User getById(Long user_id) throws Exception{
+    public Map<String, Object> getById(Long user_id) throws Exception{
         return userRepository.getById(user_id);
     }
 }
