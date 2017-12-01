@@ -9,7 +9,6 @@ import org.springframework.stereotype.Repository;
 import com.cxxy.shop.bean.User;
 
 import java.util.Map;
-import java.util.List;
 
 @Repository
 public interface UserRepository extends JpaRepository<User,Long> {
@@ -18,7 +17,8 @@ public interface UserRepository extends JpaRepository<User,Long> {
             "u.user_name as user_name," +
             "u.class_id as class_id," +
             "sc.class_name as class_name  " +
-            "from User u LEFT JOIN u.sClass sc where u.user_id = :user_id")
+            "from User u LEFT JOIN u.sClass sc where u.user_id = :user_id"
+    )
     Map<String, Object> getById(@Param("user_id")Long user_id);
 
 
