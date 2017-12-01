@@ -82,6 +82,32 @@ public class UserController extends BaseController{
         return ResponseBuilder.toPageResponse(page);
     }
 
+
+
+    /**
+     * 根据用户名和班级查询UserList
+     *
+     * http://127.0.0.1:8080/user/getUserListByJoin?pageNum=2&UserName=&className=
+     *
+     * @param userParam
+     * @return
+     * @throws Exception
+     */
+    @RequestMapping(value = "getUserListByJoin")
+    public Object getUserListByJoin(@Validated(UserParam.Query.class) UserParam userParam) throws Exception{
+
+        if(StringUtils.isBlank(userParam.getClassName())){
+            userParam.setClassName(null);
+        }
+        if(StringUtils.isBlank(userParam.getUserName())){
+            userParam.setUserName(null);
+        }
+        Page<User> page = userService.getUserListByJoin(userParam.getUserName(),userParam.getClassName(),userParam.getPageNum(),userParam.getPageSize());
+
+        return ResponseBuilder.toPageResponse(page);
+    }
+
+
     /**
      * 查询用户详情
      *

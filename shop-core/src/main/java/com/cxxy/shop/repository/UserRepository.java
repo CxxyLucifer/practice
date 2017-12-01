@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import com.cxxy.shop.bean.User;
 
 import java.util.Map;
+import java.util.List;
 
 @Repository
 public interface UserRepository extends JpaRepository<User,Long> {
@@ -30,6 +31,18 @@ public interface UserRepository extends JpaRepository<User,Long> {
     Page<Map<String, Object>> getUserList(@Param("userName") String userName,
                                           @Param("className") String className,
                                           Pageable pageable);
+
+
+    //SELECT u FROM User u LEFT JOIN FETCH u.emails e WHERE e.address LIKE'%.%@openhome.cc'
+
+    @Query("SELECT new User(u.user_id,u.user_name,u.class_id,u.sClass) FROM User u LEFT JOIN u.sClass sc " +
+            "WHERE (:userName is null or u.user_name like CONCAT('%',:userName,'%')) " +
+            "and (:className is null or sc.class_name = :className) " +
+            "order by u.user_id asc"
+    )
+    Page<User> getUserListByJoin(@Param("userName") String userName,
+                                       @Param("className") String className,
+                                       Pageable pageable);
 
 
 }

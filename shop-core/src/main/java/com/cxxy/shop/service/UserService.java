@@ -41,6 +41,19 @@ public class UserService {
 
 
     /**
+     *
+     * @param userName
+     * @param className
+     * @param pageNum
+     * @param pageSize
+     * @return
+     * @throws Exception
+     */
+    public Page<User> getUserListByJoin(String userName, String className, int pageNum, int pageSize) throws Exception{
+        return  userRepository.getUserListByJoin( userName, className, new PageRequest( pageNum, pageSize));
+    }
+
+    /**
      * 查询详情
      * @param user_id
      * @return
