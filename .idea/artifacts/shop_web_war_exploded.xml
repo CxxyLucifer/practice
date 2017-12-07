@@ -13,8 +13,8 @@
           <element id="archive" name="shop-core-1.0-SNAPSHOT.jar">
             <element id="module-output" name="shop-core" />
           </element>
-          <element id="archive" name="shop-common-1.0-SNAPSHOT.jar">
-            <element id="module-output" name="shop-common" />
+          <element id="archive" name="shop-com-1.0-SNAPSHOT.jar">
+            <element id="module-output" name="shop-com" />
           </element>
           <element id="library" level="project" name="Maven: org.springframework.boot:spring-boot-starter-data-jpa:1.5.8.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework.boot:spring-boot-starter-aop:1.5.8.RELEASE" />

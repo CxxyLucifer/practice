@@ -15,7 +15,7 @@
     <version>1.0-SNAPSHOT</version>
 
     <modules>
-        <module>shop-common</module>
+        <module>shop-com</module>
         <module>shop-core</module>
         <module>shop-web</module>
     </modules>
@@ -35,7 +35,7 @@
             <!-- 子模块 -->
             <dependency>
                 <groupId>com.cxxy</groupId>
-                <artifactId>shop-common</artifactId>
+                <artifactId>shop-com</artifactId>
                 <version>${shop.version}</version>
             </dependency>
             <dependency>

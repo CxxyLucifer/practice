@@ -15,7 +15,7 @@
     <dependencies>
         <dependency>
             <groupId>com.cxxy</groupId>
-            <artifactId>shop-common</artifactId>
+            <artifactId>shop-com</artifactId>
         </dependency>
 
         <dependency>

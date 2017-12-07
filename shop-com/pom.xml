@@ -7,10 +7,10 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>shop-common</artifactId>
+    <artifactId>shop-com</artifactId>
     <packaging>jar</packaging>
 
-    <name>shop-common</name>
+    <name>shop-com</name>
 
     <dependencies>
         <dependency>
