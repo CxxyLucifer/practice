@@ -12,6 +12,7 @@ import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.data.domain.Page;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -28,7 +29,7 @@ public class UserController extends BaseController{
     private UserService userService;
 
     @RequestMapping(value = "/addUsers", method = RequestMethod.POST)
-    public Object addUsers(@Validated(UserParam.Create.class) UserParam userParam) throws Exception{
+    public Object addUsers(@Validated(UserParam.Create.class) @RequestBody UserParam userParam) throws Exception{
         Map<String,Object> result = new HashMap<>();
 
         User user = new User();
@@ -67,8 +68,8 @@ public class UserController extends BaseController{
      * @return
      * @throws Exception
      */
-    @RequestMapping(value = "getUserListByName")
-    public Object getUserListByName(@Validated(UserParam.Query.class) UserParam userParam) throws Exception{
+    @RequestMapping(value = "getUserListByName",method = RequestMethod.POST)
+    public Object getUserListByName(@Validated(UserParam.Query.class) @RequestBody UserParam userParam) throws Exception{
 
         if(StringUtils.isBlank(userParam.getClassName())){
             userParam.setClassName(null);
