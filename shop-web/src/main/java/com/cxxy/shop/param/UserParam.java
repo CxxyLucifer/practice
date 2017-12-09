@@ -21,8 +21,12 @@ public class UserParam extends BasicForm{
     @Size(min = 4, max = 20, message = "用户名必须大于4小于20",groups = {Create.class,Modify.class})
     private String userName;
 
+    private String password;
+
     @Pattern(regexp = ValidUtil.MOBILE, message = "手机号码格式不正确", groups ={Create.class,Modify.class})
     private String mobile;
+
+    private String class_id;
 
     private String className;
 

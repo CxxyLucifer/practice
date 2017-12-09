@@ -26,6 +26,9 @@ public class User implements Serializable{
     private String password;
 
     @Column
+    private String mobile;
+
+    @Column
     private Long class_id;
 
     @ManyToOne

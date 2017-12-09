@@ -35,6 +35,8 @@ public class UserController extends BaseController{
         User user = new User();
         user.setUser_name(userParam.getUserName());
         user.setPassword(MD5Util.md5Hex("A123456"));
+        user.setMobile(userParam.getMobile());
+
         Long userId = userService.addUser(user);
 
         result.put("status" , "ok");
@@ -95,8 +97,8 @@ public class UserController extends BaseController{
      * @return
      * @throws Exception
      */
-    @RequestMapping(value = "getUserListByJoin")
-    public Object getUserListByJoin(@Validated(UserParam.Query.class) UserParam userParam) throws Exception{
+    @RequestMapping(value = "getUserListByJoin",method = RequestMethod.POST)
+    public Object getUserListByJoin(@Validated(UserParam.Query.class) @RequestBody UserParam userParam) throws Exception{
 
         if(StringUtils.isBlank(userParam.getClassName())){
             userParam.setClassName(null);
