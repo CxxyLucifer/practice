@@ -89,6 +89,13 @@
                 <version>${mysql.connector.version}</version>
             </dependency>
 
+            <!-- mysql驱动包 -->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid</artifactId>
+                <version>1.0.18</version>
+            </dependency>
+
             <!-- Lombok -->
             <dependency>
                 <groupId>org.projectlombok</groupId>
