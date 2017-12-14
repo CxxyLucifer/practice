@@ -15,11 +15,12 @@ import java.util.Map;
  * Date: 下午4:56 2017/11/20
  */
 @Repository
-public interface SClassRepository extends JpaRepository<SClass,Long>{
+public interface ClassRepository extends JpaRepository<SClass,Long>{
 
     @Query("SELECT c.class_id as orgId," +
             "c.class_name as orgName," +
-            "'1' as isLeaf," +
+            "'0' as pid," +
+            "'0' as isLeaf," +
             "1 as depth " +
             "from SClass c"
     )

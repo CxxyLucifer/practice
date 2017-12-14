@@ -1,8 +1,7 @@
 package com.cxxy.shop.service;
 
-import com.cxxy.shop.repository.SClassRepository;
+import com.cxxy.shop.repository.ClassRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,7 +16,7 @@ import java.util.Map;
 public class ClassService {
 
     @Autowired
-    private SClassRepository  classRepository;
+    private ClassRepository classRepository;
 
     /**
      * 查询所有
