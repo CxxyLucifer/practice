@@ -22,10 +22,6 @@ public class UserService {
         return user.getUser_id();
     }
 
-    public Page<User> getUserList(Example<User> example, int pageNum, int pageSize) throws Exception{
-        return  userRepository.findAll(example,new PageRequest(pageNum,pageSize));
-    }
-
     /**
      * 分页查询用户信息
      * @param userName  用户名称，模糊匹配
@@ -35,23 +31,11 @@ public class UserService {
      * @return
      * @throws Exception
      */
-    public Page<Map<String, Object>> getUserList(String userName, String className, int pageNum, int pageSize) throws Exception{
-        return  userRepository.getUserList( userName, className, new PageRequest( pageNum, pageSize));
+    public Page<Map<String, Object>> getUserList(String userName,Long classId ,String className, int pageNum, int pageSize) throws Exception{
+        return  userRepository.getUserList( userName,classId,className, new PageRequest( pageNum, pageSize));
     }
 
 
-    /**
-     *
-     * @param userName
-     * @param className
-     * @param pageNum
-     * @param pageSize
-     * @return
-     * @throws Exception
-     */
-    public Page<Map<String, Object>> getUserListByJoin(String userName, String className, int pageNum, int pageSize) throws Exception{
-        return  userRepository.getUserListByJoin( userName, className, new PageRequest( pageNum, pageSize));
-    }
 
     /**
      * 查询详情

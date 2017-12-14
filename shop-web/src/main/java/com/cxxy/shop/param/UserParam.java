@@ -26,7 +26,7 @@ public class UserParam extends BasicForm{
     @Pattern(regexp = ValidUtil.MOBILE, message = "手机号码格式不正确", groups ={Create.class,Modify.class})
     private String mobile;
 
-    private String class_id;
+    private Long class_id;
 
     private String className;
 

@@ -46,21 +46,6 @@ public class UserController extends BaseController{
     }
 
 
-    @RequestMapping(value = "getUserListByPage")
-    public Object getUserListByPage(@Valid UserParam userParam) throws Exception{
-
-        User user = new User();
-        user.setUser_name(userParam.getUserName());
-        ExampleMatcher matcher = ExampleMatcher.matchingAll();
-
-        Example<User> example = Example.of(user,matcher);
-
-        Page<User> page = userService.getUserList(example,userParam.getPageNum(),userParam.getPageSize());
-
-        return ResponseBuilder.toPageResponse(page);
-    }
-
-
     /**
      * 根据用户名和班级查询UserList
      *
@@ -70,7 +55,7 @@ public class UserController extends BaseController{
      * @return
      * @throws Exception
      */
-    @RequestMapping(value = "getUserListByName",method = RequestMethod.POST)
+    @RequestMapping(value = "getUserList",method = RequestMethod.POST)
     public Object getUserListByName(@Validated(UserParam.Query.class) @RequestBody UserParam userParam) throws Exception{
 
         if(StringUtils.isBlank(userParam.getClassName())){
@@ -81,32 +66,7 @@ public class UserController extends BaseController{
         if(StringUtils.isBlank(userParam.getUserName())){
             userParam.setUserName(null);
         }
-        Page<Map<String, Object>> page = userService.getUserList(userParam.getUserName(),userParam.getClassName(),userParam.getPageNum(),userParam.getPageSize());
-
-        return ResponseBuilder.toPageResponse(page);
-    }
-
-
-
-    /**
-     * 根据用户名和班级查询UserList
-     *
-     * http://127.0.0.1:8080/user/getUserListByJoin?pageNum=2&UserName=&className=
-     *
-     * @param userParam
-     * @return
-     * @throws Exception
-     */
-    @RequestMapping(value = "getUserListByJoin",method = RequestMethod.POST)
-    public Object getUserListByJoin(@Validated(UserParam.Query.class) @RequestBody UserParam userParam) throws Exception{
-
-        if(StringUtils.isBlank(userParam.getClassName())){
-            userParam.setClassName(null);
-        }
-        if(StringUtils.isBlank(userParam.getUserName())){
-            userParam.setUserName(null);
-        }
-        Page<Map<String, Object>> page = userService.getUserListByJoin(userParam.getUserName(),userParam.getClassName(),userParam.getPageNum(),userParam.getPageSize());
+        Page<Map<String, Object>> page = userService.getUserList(userParam.getUserName(),userParam.getClass_id(),userParam.getClassName(),userParam.getPageNum(),userParam.getPageSize());
 
         return ResponseBuilder.toPageResponse(page);
     }
