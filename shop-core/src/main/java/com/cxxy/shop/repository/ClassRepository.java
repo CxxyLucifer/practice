@@ -3,7 +3,9 @@ package com.cxxy.shop.repository;
 import com.cxxy.shop.bean.SClass;
 import org.springframework.data.domain.Page;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -25,4 +27,9 @@ public interface ClassRepository extends JpaRepository<SClass,Long>{
             "from SClass c"
     )
     List<Map<String, Object>> getAllList();
+
+
+    @Modifying
+    @Query("update SClass c set c.class_name = :className where c.class_id = :classId")
+    void update(@Param("className") String className,@Param("classId") Long classId);
 }
