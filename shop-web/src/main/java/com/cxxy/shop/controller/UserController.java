@@ -60,7 +60,7 @@ public class UserController extends BaseController{
 
         if(StringUtils.isBlank(userParam.getClassName())){
             userParam.setClassName(null);
-            //throw new Exception("参数异常");
+            //throw new CommonException("参数异常");
         }
 
         if(StringUtils.isBlank(userParam.getUserName())){

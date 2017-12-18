@@ -1,12 +1,9 @@
 package com.cxxy.shop.controller;
 
 import com.cxxy.shop.bean.SClass;
-import com.cxxy.shop.bean.User;
 import com.cxxy.shop.param.ClassParam;
-import com.cxxy.shop.param.UserParam;
 import com.cxxy.shop.response.Response;
 import com.cxxy.shop.service.ClassService;
-import com.cxxy.shop.util.MD5Util;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -58,6 +55,18 @@ public class ClassController extends BaseController{
         BeanUtils.copyProperties(classParam,sClass);
 
         classService.updateClass(sClass);
+
+        result.put("status", "ok");
+
+        return Response.toResponse(result);
+    }
+
+
+    @RequestMapping(value = "/delete", method = RequestMethod.POST)
+    public Object delete(@Validated(ClassParam.Delete.class) @RequestBody ClassParam classParam) throws Exception {
+        Map<String, Object> result = new HashMap<>();
+
+        classService.delete(classParam.getClass_id());
 
         result.put("status", "ok");
 

@@ -37,5 +37,6 @@ public interface UserRepository extends JpaRepository<User,Long> {
                                           @Param("className") String className,
                                           Pageable pageable);
 
-
+    @Query("SELECT COUNT(u) as total from User u where u.class_id = :classId")
+    Long getUserCountByClassId(@Param("classId") Long classId);
 }
