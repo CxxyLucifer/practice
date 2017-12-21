@@ -89,7 +89,7 @@
                 <version>${mysql.connector.version}</version>
             </dependency>
 
-            <!-- mysql驱动包 -->
+            <!-- druid -->
             <dependency>
                 <groupId>com.alibaba</groupId>
                 <artifactId>druid</artifactId>

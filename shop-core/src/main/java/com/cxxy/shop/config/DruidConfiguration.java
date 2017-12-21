@@ -17,6 +17,7 @@ import org.springframework.context.annotation.Configuration;
 import com.alibaba.druid.pool.DruidDataSource;
 import com.alibaba.druid.support.http.StatViewServlet;
 import com.alibaba.druid.support.http.WebStatFilter;
+import org.springframework.context.annotation.Primary;
 
 @Configuration
 public class DruidConfiguration {
@@ -43,11 +44,19 @@ public class DruidConfiguration {
         return registrationBean;
     }
 
-
-    @Bean
-    @ConfigurationProperties(prefix = "spring.datasource")
-    public DataSource druidDataSource(){
+    @Bean(name = "writeDruidDataSource")
+    @ConfigurationProperties(prefix = "spring.datasource.write")
+    @Primary
+    public DataSource writeDruidDataSource(){
         return new DruidDataSource();
     }
+
+    @Bean(name = "readDruidDataSource")
+    @ConfigurationProperties(prefix = "spring.datasource.read")
+    public DataSource readDruidDataSource(){
+        return new DruidDataSource();
+    }
+
+
 
 }
