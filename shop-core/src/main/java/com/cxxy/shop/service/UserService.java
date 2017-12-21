@@ -1,6 +1,6 @@
 package com.cxxy.shop.service;
 
-import com.cxxy.shop.config.ReadDataSource;
+import com.cxxy.shop.config.annotation.ReadDataSource;
 import com.cxxy.shop.repository.UserRepository;
 import com.cxxy.shop.bean.User;
 import org.springframework.beans.factory.annotation.Autowired;

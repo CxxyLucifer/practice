@@ -1,4 +1,4 @@
-package com.cxxy.shop.config;
+package com.cxxy.shop.config.annotation;
 
 
 import java.lang.annotation.*;

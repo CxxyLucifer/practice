@@ -1,13 +1,11 @@
 package com.cxxy.shop.service;
 
 import com.cxxy.shop.bean.SClass;
-import com.cxxy.shop.bean.User;
-import com.cxxy.shop.config.ReadDataSource;
+import com.cxxy.shop.config.annotation.ReadDataSource;
 import com.cxxy.shop.exception.CommonException;
 import com.cxxy.shop.repository.ClassRepository;
 import com.cxxy.shop.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

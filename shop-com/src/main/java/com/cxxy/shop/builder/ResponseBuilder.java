@@ -15,7 +15,7 @@ public final class ResponseBuilder extends Response {
     private ResponseBuilder() {}
 
     /**
-     * spring data 项目，转为分页响应对象 {@link CentreCutPageResponse}
+     * spring data jpa 项目，转为分页响应对象 {@link CentreCutPageResponse}
      *
      * @param page      {@link Page}
      * @param converter 转换器
