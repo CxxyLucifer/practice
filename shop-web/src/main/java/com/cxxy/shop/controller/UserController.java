@@ -6,6 +6,8 @@ import com.cxxy.shop.param.UserParam;
 import com.cxxy.shop.response.Response;
 import com.cxxy.shop.service.UserService;
 import com.cxxy.shop.util.MD5Util;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiOperation;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
@@ -28,6 +30,8 @@ public class UserController extends BaseController{
     @Autowired
     private UserService userService;
 
+    @ApiOperation(value="创建用户", notes="根据UserParam对象创建用户")
+    @ApiImplicitParam(name="userParam",value = "用户请求实体类",required = true,dataType = "UserParam")
     @RequestMapping(value = "/addUsers", method = RequestMethod.POST)
     public Object addUsers(@Validated(UserParam.Create.class) @RequestBody UserParam userParam) throws Exception{
         Map<String,Object> result = new HashMap<>();
@@ -55,6 +59,8 @@ public class UserController extends BaseController{
      * @return
      * @throws Exception
      */
+    @ApiOperation(value="查询用户列表", notes="分页查询用户列表，支持姓名、班级搜索")
+    @ApiImplicitParam(name="userParam",value = "用户请求实体类",required = true,dataType = "UserParam")
     @RequestMapping(value = "getUserList",method = RequestMethod.POST)
     public Object getUserListByName(@Validated(UserParam.Query.class) @RequestBody UserParam userParam) throws Exception{
 
@@ -81,7 +87,9 @@ public class UserController extends BaseController{
      * @return
      * @throws Exception
      */
-    @RequestMapping(value = "getUserById")
+    @ApiOperation(value = "查询用户详情",notes= "查询用户详情")
+    @ApiImplicitParam(name="user_id",value = "用户编号",required = true,dataType = "Long")
+    @RequestMapping(value = "getUserById",method = RequestMethod.GET)
     public Object getUserById(@Validated(UserParam.Query.class) UserParam userParam) throws Exception{
 
         Map<String, Object> user = userService.getById(userParam.getUser_id());
