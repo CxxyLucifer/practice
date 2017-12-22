@@ -10,16 +10,10 @@ import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Example;
-import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.data.domain.Page;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -66,7 +60,6 @@ public class UserController extends BaseController{
 
         if(StringUtils.isBlank(userParam.getClassName())){
             userParam.setClassName(null);
-            //throw new CommonException("参数异常");
         }
 
         if(StringUtils.isBlank(userParam.getUserName())){
@@ -83,16 +76,16 @@ public class UserController extends BaseController{
      *
      * http://127.0.0.1:8080/user/getUserById?user_id=11
      *
-     * @param userParam
+     * @param user_id
      * @return
      * @throws Exception
      */
     @ApiOperation(value = "查询用户详情",notes= "查询用户详情")
-    @ApiImplicitParam(name="user_id",value = "用户编号",required = true,dataType = "Long")
-    @RequestMapping(value = "getUserById",method = RequestMethod.GET)
-    public Object getUserById(@Validated(UserParam.Query.class) UserParam userParam) throws Exception{
+    @ApiImplicitParam(name="user_id",value = "用户编号",required = true,dataType = "Long",paramType = "path")
+    @RequestMapping(value = "getUserById/{user_id}",method = RequestMethod.GET)
+    public Object getUserById(@PathVariable Long user_id) throws Exception{
 
-        Map<String, Object> user = userService.getById(userParam.getUser_id());
+        Map<String, Object> user = userService.getById(user_id);
 
         return Response.toResponse(user);
     }

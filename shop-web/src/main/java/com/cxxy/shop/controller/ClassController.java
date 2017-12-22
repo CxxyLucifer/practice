@@ -11,10 +11,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.List;
@@ -67,12 +64,12 @@ public class ClassController extends BaseController{
     }
 
     @ApiOperation(value="删除班级", notes="根据ClassParam对象创建班级")
-    @ApiImplicitParam(name="class_id",value = "班级编号",required = true,dataType = "class_id")
-    @RequestMapping(value = "/delete", method = RequestMethod.POST)
-    public Object delete(@Validated(ClassParam.Delete.class) @RequestBody ClassParam classParam) throws Exception {
+    @ApiImplicitParam(name="class_id",value = "班级编号",required = true,dataType = "Long",paramType = "path")
+    @RequestMapping(value = "/delete/{class_id}", method = RequestMethod.GET)
+    public Object delete(@PathVariable Long class_id) throws Exception {
         Map<String, Object> result = new HashMap<>();
 
-        classService.delete(classParam.getClass_id());
+        classService.delete(class_id);
 
         result.put("status", "ok");
 

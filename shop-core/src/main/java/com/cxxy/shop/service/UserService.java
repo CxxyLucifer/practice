@@ -1,6 +1,7 @@
 package com.cxxy.shop.service;
 
 import com.cxxy.shop.config.annotation.ReadDataSource;
+import com.cxxy.shop.exception.CommonException;
 import com.cxxy.shop.repository.UserRepository;
 import com.cxxy.shop.bean.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,7 +37,6 @@ public class UserService {
     }
 
 
-
     /**
      * 查询详情
      * @param user_id
@@ -45,6 +45,10 @@ public class UserService {
      */
     @ReadDataSource
     public Map<String, Object> getById(Long user_id) throws Exception{
+
+        if(!userRepository.exists(user_id)){
+            throw new CommonException("用户不存在");
+        }
         return userRepository.getById(user_id);
     }
 }

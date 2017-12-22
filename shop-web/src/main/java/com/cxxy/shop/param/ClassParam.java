@@ -18,7 +18,7 @@ import javax.validation.constraints.Size;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class ClassParam extends BasicForm{
 
-    @NotNull(message = "班级编号不能为空",groups = {ClassParam.Modify.class,ClassParam.Delete.class})
+    @NotNull(message = "班级编号不能为空",groups = ClassParam.Modify.class)
     private Long class_id;
 
     @NotNull(message = "班级名称不能为空",groups = {ClassParam.Create.class,ClassParam.Modify.class})
@@ -30,7 +30,5 @@ public class ClassParam extends BasicForm{
     public interface Modify {}
 
     public interface Query {}
-
-    public interface Delete {}
 
 }
