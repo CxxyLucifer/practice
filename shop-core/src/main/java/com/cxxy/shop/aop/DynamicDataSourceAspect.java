@@ -1,6 +1,6 @@
 package com.cxxy.shop.aop;
 
-import com.cxxy.shop.config.DynamicDataSourceHolder;
+import com.cxxy.shop.config.dataSource.DynamicDataSourceHolder;
 import com.cxxy.shop.config.annotation.ReadDataSource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

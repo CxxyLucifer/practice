@@ -3,9 +3,11 @@ package com.cxxy.shop.filter;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Component;
 import javax.servlet.*;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Enumeration;
 
 /**
  * Author:liuhui
@@ -20,13 +22,18 @@ public class CorsFilter implements Filter{
         HttpServletRequest request = (HttpServletRequest)req;
 
         String origin = request.getHeader("Origin");
+        String method = request.getRequestURI();
+        String auth = request.getHeader("Authorization");
+
         response.setHeader("Access-Control-Allow-Origin", StringUtils.defaultIfBlank(origin,"*"));
         response.setHeader("Access-Control-Allow-Credentials","true");
         response.setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, DELETE");
-        response.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+        response.setHeader("Access-Control-Allow-Headers", "Platform, Authorization, Origin, X-Requested-With, Content-Type, Accept");
 
         chain.doFilter(req, res);
     }
+
     public void init(FilterConfig filterConfig) {}
+
     public void destroy() {}
 }

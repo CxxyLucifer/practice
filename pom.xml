@@ -31,6 +31,7 @@
         <lombok.version>1.16.18</lombok.version>
         <fastjson.version>1.2.39</fastjson.version>
         <swagger2.version>2.7.0</swagger2.version>
+        <redis.version>1.4.7.RELEASE</redis.version>
     </properties>
 
     <dependencyManagement>
@@ -165,6 +166,20 @@
                 <groupId>io.springfox</groupId>
                 <artifactId>springfox-swagger-ui</artifactId>
                 <version>${swagger2.version}</version>
+            </dependency>
+
+            <!-- redis -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-redis</artifactId>
+                <version>${redis.version}</version>
+            </dependency>
+
+            <!--Gson-->
+            <dependency>
+                <groupId>com.google.code.gson</groupId>
+                <artifactId>gson</artifactId>
+                <version>2.8.2</version>
             </dependency>
 
             <!-- devtools -->
