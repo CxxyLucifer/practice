@@ -5,6 +5,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import javax.servlet.*;
+import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -20,11 +21,8 @@ import java.util.stream.Collectors;
  * Description:
  * Date: 下午6:07 2017/11/28
  */
-@Component
+@WebFilter(filterName = "CorsAuthFilter",urlPatterns = {"/user/*","/class/*"})
 public class CorsAuthFilter implements Filter{
-
-    @Value("${except.request}")
-    private String exceptrequest;
 
     public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain) throws IOException, ServletException {
         HttpServletResponse response = (HttpServletResponse) res;
@@ -41,9 +39,7 @@ public class CorsAuthFilter implements Filter{
         response.setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, DELETE");
         response.setHeader("Access-Control-Allow-Headers", "Platform, Authorization, Origin, X-Requested-With, Content-Type, Accept");
 
-        if(!validateJwt(method)){
-            chain.doFilter(req, res);
-        } else if(StringUtils.isNotEmpty(auth)){
+        if(StringUtils.isNotEmpty(auth)){
             chain.doFilter(req, res);
         } else {
             PrintWriter out = response.getWriter();
@@ -59,21 +55,5 @@ public class CorsAuthFilter implements Filter{
     public void init(FilterConfig filterConfig) {}
 
     public void destroy() {}
-
-    private boolean validateJwt(String method) {
-        String[] excepts = exceptrequest.split(",");
-        boolean flag = true;
-        if(method.contains(".css") || method.contains(".js") || method.contains(".ico") || method.contains(".html") || method.contains(".png")){
-            flag = false;
-        }else{
-            for(String item: excepts){
-                if(item.equals(method)){
-                    flag = false;
-                    break;
-                }
-            }
-        }
-        return flag;
-    }
 
 }
