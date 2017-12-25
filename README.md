@@ -7,3 +7,5 @@
 2、集成druid数据源，配置master、salve实现读写分离 数据库监控，访问地址：http://127.0.0.1:8080/druid/index.html
 
 3、集成swagger2构建RESTful API ,访问地址：http://127.0.0.1:8080/swagger-ui.html
+
+4、集成Redis缓存

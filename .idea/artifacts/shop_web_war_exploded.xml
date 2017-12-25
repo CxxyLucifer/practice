@@ -7,9 +7,6 @@
           <element id="module-output" name="shop-web" />
         </element>
         <element id="directory" name="lib">
-          <element id="archive" name="shop-web-0.0.1-SNAPSHOT.jar">
-            <element id="module-output" name="shop-web" />
-          </element>
           <element id="archive" name="shop-core-1.0-SNAPSHOT.jar">
             <element id="module-output" name="shop-core" />
           </element>
@@ -45,6 +42,7 @@
           <element id="library" level="project" name="Maven: commons-codec:commons-codec:1.10" />
           <element id="library" level="project" name="Maven: com.alibaba:fastjson:1.2.39" />
           <element id="library" level="project" name="Maven: javax.servlet:javax.servlet-api:4.0.0" />
+          <element id="library" level="project" name="Maven: io.jsonwebtoken:jjwt:0.9.0" />
           <element id="library" level="project" name="Maven: org.springframework:spring-web:4.3.12.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-aop:4.3.12.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-beans:4.3.12.RELEASE" />
