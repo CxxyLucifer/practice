@@ -2,6 +2,7 @@ package com.cxxy.shop.controller;
 
 import com.cxxy.shop.bean.SClass;
 import com.cxxy.shop.param.ClassParam;
+import com.cxxy.shop.redis.RedisManager;
 import com.cxxy.shop.response.Response;
 import com.cxxy.shop.service.ClassService;
 import io.swagger.annotations.ApiImplicitParam;
@@ -24,19 +25,22 @@ import java.util.Map;
  */
 @RestController
 @RequestMapping(value = "/class")
-public class ClassController extends BaseController{
+public class ClassController extends BaseController {
 
     @Autowired
     private ClassService classService;
 
-    @ApiOperation(value="创建班级", notes="根据ClassParam对象创建班级")
-    @ApiImplicitParam(name="classParam",value = "班级请求实体类",required = true,dataType = "ClassParam")
+    @Autowired
+    private RedisManager redisManager;
+
+    @ApiOperation(value = "创建班级", notes = "根据ClassParam对象创建班级")
+    @ApiImplicitParam(name = "classParam", value = "班级请求实体类", required = true, dataType = "ClassParam")
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public Object add(@Validated(ClassParam.Create.class) @RequestBody ClassParam classParam) throws Exception {
         Map<String, Object> result = new HashMap<>();
 
         SClass sClass = new SClass();
-        BeanUtils.copyProperties(classParam,sClass);
+        BeanUtils.copyProperties(classParam, sClass);
 
         Long classId = classService.addClass(sClass);
 
@@ -47,14 +51,14 @@ public class ClassController extends BaseController{
     }
 
 
-    @ApiOperation(value="编辑班级", notes="根据ClassParam对象更新班级")
-    @ApiImplicitParam(name="classParam",value = "班级请求实体类",required = true,dataType = "ClassParam")
+    @ApiOperation(value = "编辑班级", notes = "根据ClassParam对象更新班级")
+    @ApiImplicitParam(name = "classParam", value = "班级请求实体类", required = true, dataType = "ClassParam")
     @RequestMapping(value = "/update", method = RequestMethod.POST)
     public Object update(@Validated(ClassParam.Modify.class) @RequestBody ClassParam classParam) throws Exception {
         Map<String, Object> result = new HashMap<>();
 
         SClass sClass = new SClass();
-        BeanUtils.copyProperties(classParam,sClass);
+        BeanUtils.copyProperties(classParam, sClass);
 
         classService.updateClass(sClass);
 
@@ -63,8 +67,8 @@ public class ClassController extends BaseController{
         return Response.toResponse(result);
     }
 
-    @ApiOperation(value="删除班级", notes="根据ClassParam对象创建班级")
-    @ApiImplicitParam(name="class_id",value = "班级编号",required = true,dataType = "Long",paramType = "path")
+    @ApiOperation(value = "删除班级", notes = "根据ClassParam对象创建班级")
+    @ApiImplicitParam(name = "class_id", value = "班级编号", required = true, dataType = "Long", paramType = "path")
     @RequestMapping(value = "/delete/{class_id}", method = RequestMethod.GET)
     public Object delete(@PathVariable Long class_id) throws Exception {
         Map<String, Object> result = new HashMap<>();
@@ -76,11 +80,19 @@ public class ClassController extends BaseController{
         return Response.toResponse(result);
     }
 
-    @ApiOperation(value="查询所有班级", notes="查询所有班级")
+    @ApiOperation(value = "查询所有班级", notes = "查询所有班级")
     @RequestMapping(value = "allList", method = RequestMethod.GET)
-    public Object getAllList() throws Exception{
+    public Object getAllList() throws Exception {
+        List<Map<String, Object>> list = null;
 
-        List<Map<String, Object>> list = classService.getAllList();
+        if (redisManager.get("allClassList") != null) {
+            logger.info("================ allClassList from redis");
+            list = (List<Map<String, Object>>)redisManager.get("allClassList");
+        } else {
+            list = classService.getAllList();
+            redisManager.set("allClassList", list);
+            logger.info("================ allClassList from db");
+        }
 
         return Response.toResponse(list);
     }

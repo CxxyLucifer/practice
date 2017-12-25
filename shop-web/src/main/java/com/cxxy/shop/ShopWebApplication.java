@@ -12,32 +12,30 @@ import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
-import javax.servlet.annotation.WebFilter;
-
 @EnableSwagger2
 @SpringBootApplication
 @ServletComponentScan(value = "com.cxxy.shop.filter")
 public class ShopWebApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(ShopWebApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(ShopWebApplication.class, args);
+    }
 
-	@Bean
-	Docket createRestApi() {
-		return new Docket(DocumentationType.SWAGGER_2)
-				.apiInfo(apiInfo())
-				.select()
-				.apis(RequestHandlerSelectors.basePackage("com.cxxy.shop.controller"))
-				.paths(PathSelectors.any())
-				.build();
-	}
+    @Bean
+    Docket createRestApi() {
+        return new Docket(DocumentationType.SWAGGER_2)
+                .apiInfo(apiInfo())
+                .select()
+                .apis(RequestHandlerSelectors.basePackage("com.cxxy.shop.controller"))
+                .paths(PathSelectors.any())
+                .build();
+    }
 
-	private ApiInfo apiInfo() {
-		return new ApiInfoBuilder()
-				.title("Shop RESTful API")
-				.contact("liuhui")
-				.version("1.0")
-				.build();
-	}
+    private ApiInfo apiInfo() {
+        return new ApiInfoBuilder()
+                .title("Shop RESTful API")
+                .contact("liuhui")
+                .version("1.0")
+                .build();
+    }
 }
