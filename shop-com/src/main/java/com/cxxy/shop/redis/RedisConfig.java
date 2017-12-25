@@ -24,7 +24,7 @@ import java.util.Map;
 @Configuration
 @EnableAutoConfiguration
 public class RedisConfig {
-    private Logger logger = LoggerFactory.getLogger(RedisConfig.class);
+    private Logger logger = LoggerFactory.getLogger(getClass());
 
     @Bean
     @ConfigurationProperties(prefix = "spring.redis")
@@ -39,6 +39,7 @@ public class RedisConfig {
         JedisConnectionFactory factory = new JedisConnectionFactory();
         factory.setPoolConfig(this.getRedisConfig());
         logger.info("====================== JedisConnectionFactory bean init success.");
+
         return factory;
 
     }

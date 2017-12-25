@@ -87,7 +87,7 @@ public class ClassController extends BaseController {
 
         if (redisManager.get("allClassList") != null) {
             logger.info("================ allClassList from redis");
-            list = (List<Map<String, Object>>)redisManager.get("allClassList");
+            list = (List<Map<String, Object>>) redisManager.get("allClassList");
         } else {
             list = classService.getAllList();
             redisManager.set("allClassList", list);

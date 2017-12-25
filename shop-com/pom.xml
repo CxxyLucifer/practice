@@ -28,11 +28,5 @@
             <artifactId>spring-boot-starter-redis</artifactId>
         </dependency>
 
-        <!--Gson-->
-        <dependency>
-            <groupId>com.google.code.gson</groupId>
-            <artifactId>gson</artifactId>
-        </dependency>
-
     </dependencies>
 </project>

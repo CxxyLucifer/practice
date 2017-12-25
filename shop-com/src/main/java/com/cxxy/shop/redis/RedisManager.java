@@ -1,18 +1,17 @@
 package com.cxxy.shop.redis;
 
 import com.cxxy.shop.redis.serializer.RedisObjectSerializer;
-import com.cxxy.shop.util.JSONUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.connection.RedisStringCommands;
 import org.springframework.data.redis.core.RedisCallback;
 import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.data.redis.serializer.RedisSerializer;
+import org.springframework.data.redis.core.types.Expiration;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.Map;
 import java.util.concurrent.TimeUnit;
+
 
 /**
  * Author:liuhui
@@ -21,7 +20,7 @@ import java.util.concurrent.TimeUnit;
  */
 @Service
 public class RedisManager {
-    private Logger logger = LoggerFactory.getLogger(RedisManager.class);
+    private Logger logger = LoggerFactory.getLogger(getClass());
 
     @Autowired
     private RedisTemplate<String, Object> redisTemplate;
@@ -33,10 +32,27 @@ public class RedisManager {
      * @param value Object
      * @return boolean
      */
-    public boolean set(final String key, final Object value) {
+    public boolean set(String key, Object value) {
         boolean result = redisTemplate.execute((RedisCallback<Boolean>) connection -> {
             RedisObjectSerializer serializer = (RedisObjectSerializer) redisTemplate.getValueSerializer();
             connection.set(serializer.serialize(key), serializer.serialize(value));
+            return true;
+        });
+        return result;
+    }
+
+    /**
+     * 存储数据
+     *
+     * @param key     String
+     * @param value   Object
+     * @param timeout seconds
+     * @return boolean
+     */
+    public boolean set(String key, Object value, long timeout) {
+        boolean result = redisTemplate.execute((RedisCallback<Boolean>) connection -> {
+            RedisObjectSerializer serializer = (RedisObjectSerializer) redisTemplate.getValueSerializer();
+            connection.setEx(serializer.serialize(key), timeout, serializer.serialize(value));
             return true;
         });
         return result;
@@ -48,7 +64,7 @@ public class RedisManager {
      * @param key String
      * @return Object
      */
-    public Object get(final String key) {
+    public Object get(String key) {
         Object result = redisTemplate.execute((RedisCallback<Object>) connection -> {
             RedisObjectSerializer serializer = (RedisObjectSerializer) redisTemplate.getValueSerializer();
             byte[] value = connection.get(serializer.serialize(key));
@@ -57,13 +73,25 @@ public class RedisManager {
         return result;
     }
 
+
+    /**
+     * 设置过期时间
+     *
+     * @param key
+     * @param expire
+     * @return
+     */
+    public boolean expire(String key, final long expire) {
+        return redisTemplate.expire(key, expire, TimeUnit.SECONDS);
+    }
+
     /**
      * 删除
      *
      * @param key String
      * @return
      */
-    public Long remove(final String key) {
+    public Long remove(String key) {
         Long result = redisTemplate.execute((RedisCallback<Long>) connection -> {
             RedisObjectSerializer serializer = (RedisObjectSerializer) redisTemplate.getValueSerializer();
             Long value = connection.del(serializer.serialize(key));
