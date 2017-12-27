@@ -8,4 +8,4 @@
 
 3、集成swagger2构建RESTful API ,访问地址：http://127.0.0.1:8080/swagger-ui.html
 
-4、集成Redis缓存
+4、集成Redis缓存, RedisManager是对Redis缓存常用操作方法的封装
