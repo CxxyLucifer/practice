@@ -1,22 +1,59 @@
 <component name="ArtifactManager">
-  <artifact type="exploded-war" name="shop-web:war exploded">
-    <output-path>$PROJECT_DIR$/shop-web/target/shop-web-0.0.1-SNAPSHOT</output-path>
+  <artifact type="exploded-war" name="practice-web:war exploded">
+    <output-path>$PROJECT_DIR$/practice-web/target/practice-web-0.0.1-SNAPSHOT</output-path>
     <root id="root">
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
           <element id="module-output" name="practice-web" />
         </element>
         <element id="directory" name="lib">
-          <element id="library" level="project" name="Maven: com.cxxy:shop-core:unknown" />
+          <element id="archive" name="practice-core-1.0-SNAPSHOT.jar">
+            <element id="module-output" name="practice-core" />
+          </element>
+          <element id="archive" name="practice-com-1.0-SNAPSHOT.jar">
+            <element id="module-output" name="practice-com" />
+          </element>
+          <element id="library" level="project" name="Maven: org.springframework.boot:spring-boot-starter-redis:1.4.7.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework.data:spring-data-redis:1.8.8.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework.data:spring-data-keyvalue:1.2.8.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-oxm:4.3.12.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-context-support:4.3.12.RELEASE" />
+          <element id="library" level="project" name="Maven: redis.clients:jedis:2.9.0" />
+          <element id="library" level="project" name="Maven: org.apache.commons:commons-pool2:2.4.2" />
+          <element id="library" level="project" name="Maven: org.springframework.boot:spring-boot-starter-data-jpa:1.5.8.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework.boot:spring-boot-starter-aop:1.5.8.RELEASE" />
+          <element id="library" level="project" name="Maven: org.aspectj:aspectjweaver:1.8.11" />
+          <element id="library" level="project" name="Maven: org.hibernate:hibernate-core:5.0.12.Final" />
+          <element id="library" level="project" name="Maven: org.hibernate.javax.persistence:hibernate-jpa-2.1-api:1.0.0.Final" />
+          <element id="library" level="project" name="Maven: org.javassist:javassist:3.21.0-GA" />
+          <element id="library" level="project" name="Maven: antlr:antlr:2.7.7" />
+          <element id="library" level="project" name="Maven: org.jboss:jandex:2.0.0.Final" />
+          <element id="library" level="project" name="Maven: dom4j:dom4j:1.6.1" />
+          <element id="library" level="project" name="Maven: org.hibernate.common:hibernate-commons-annotations:5.0.1.Final" />
+          <element id="library" level="project" name="Maven: org.hibernate:hibernate-entitymanager:5.0.12.Final" />
+          <element id="library" level="project" name="Maven: javax.transaction:javax.transaction-api:1.2" />
+          <element id="library" level="project" name="Maven: org.springframework.data:spring-data-jpa:1.11.8.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework.data:spring-data-commons:1.13.8.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-orm:4.3.12.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-aspects:4.3.12.RELEASE" />
+          <element id="library" level="project" name="Maven: mysql:mysql-connector-java:8.0.8-dmr" />
+          <element id="library" level="project" name="Maven: com.alibaba:druid:1.0.18" />
+          <element id="library" level="project" name="Maven: org.projectlombok:lombok:1.16.18" />
+          <element id="library" level="project" name="Maven: commons-codec:commons-codec:1.10" />
+          <element id="library" level="project" name="Maven: com.alibaba:fastjson:1.2.39" />
+          <element id="library" level="project" name="Maven: javax.servlet:javax.servlet-api:4.0.0" />
+          <element id="library" level="project" name="Maven: io.jsonwebtoken:jjwt:0.9.0" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-web:4.3.12.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-aop:4.3.12.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-beans:4.3.12.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-context:4.3.12.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework.boot:spring-boot-starter-jdbc:1.5.8.RELEASE" />
           <element id="library" level="project" name="Maven: org.apache.tomcat:tomcat-jdbc:8.5.23" />
           <element id="library" level="project" name="Maven: org.apache.tomcat:tomcat-juli:8.5.23" />
           <element id="library" level="project" name="Maven: org.springframework:spring-jdbc:4.3.12.RELEASE" />
-          <element id="library" level="project" name="Maven: org.springframework:spring-beans:4.3.12.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-tx:4.3.12.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework.boot:spring-boot-starter:1.5.8.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework.boot:spring-boot:1.5.8.RELEASE" />
-          <element id="library" level="project" name="Maven: org.springframework:spring-context:4.3.12.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework.boot:spring-boot-autoconfigure:1.5.8.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework.boot:spring-boot-starter-logging:1.5.8.RELEASE" />
           <element id="library" level="project" name="Maven: ch.qos.logback:logback-classic:1.1.11" />
@@ -35,8 +72,6 @@
           <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.8.10" />
           <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.8.0" />
           <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-core:2.8.10" />
-          <element id="library" level="project" name="Maven: org.springframework:spring-web:4.3.12.RELEASE" />
-          <element id="library" level="project" name="Maven: org.springframework:spring-aop:4.3.12.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-webmvc:4.3.12.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-expression:4.3.12.RELEASE" />
           <element id="library" level="project" name="Maven: javax.validation:validation-api:1.1.0.Final" />
@@ -54,7 +89,6 @@
           <element id="library" level="project" name="Maven: io.springfox:springfox-swagger-common:2.7.0" />
           <element id="library" level="project" name="Maven: io.springfox:springfox-spring-web:2.7.0" />
           <element id="library" level="project" name="Maven: org.reflections:reflections:0.9.11" />
-          <element id="library" level="project" name="Maven: org.javassist:javassist:3.21.0-GA" />
           <element id="library" level="project" name="Maven: com.google.guava:guava:18.0" />
           <element id="library" level="project" name="Maven: org.slf4j:slf4j-api:1.7.25" />
           <element id="library" level="project" name="Maven: org.springframework.plugin:spring-plugin-core:1.2.0.RELEASE" />
@@ -65,7 +99,7 @@
         </element>
       </element>
       <element id="directory" name="META-INF">
-        <element id="file-copy" path="$PROJECT_DIR$/practice-web/target/shop-web-0.0.1-SNAPSHOT/META-INF/MANIFEST.MF" />
+        <element id="file-copy" path="$PROJECT_DIR$/practice-web/target/practice-web-0.0.1-SNAPSHOT/META-INF/MANIFEST.MF" />
       </element>
       <element id="javaee-facet-resources" facet="practice-web/web/Web" />
     </root>

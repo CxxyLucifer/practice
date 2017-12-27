@@ -2,10 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/shop.iml" filepath="$PROJECT_DIR$/shop.iml" />
-      <module fileurl="file://$PROJECT_DIR$/shop-com/shop-com.iml" filepath="$PROJECT_DIR$/shop-com/shop-com.iml" />
-      <module fileurl="file://$PROJECT_DIR$/shop-core/shop-core.iml" filepath="$PROJECT_DIR$/shop-core/shop-core.iml" />
-      <module fileurl="file://$PROJECT_DIR$/shop-web/shop-web.iml" filepath="$PROJECT_DIR$/shop-web/shop-web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/practice.iml" filepath="$PROJECT_DIR$/practice.iml" />
+      <module fileurl="file://$PROJECT_DIR$/practice-com/practice-com.iml" filepath="$PROJECT_DIR$/practice-com/practice-com.iml" />
+      <module fileurl="file://$PROJECT_DIR$/practice-core/practice-core.iml" filepath="$PROJECT_DIR$/practice-core/practice-core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/practice-web/practice-web.iml" filepath="$PROJECT_DIR$/practice-web/practice-web.iml" />
     </modules>
   </component>
 </project>
