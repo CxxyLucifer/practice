@@ -33,7 +33,7 @@ public class PracticeWebApplication {
 
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-                .title("Shop RESTful API")
+                .title("Practice RESTful API")
                 .contact("liuhui")
                 .version("1.0")
                 .build();
