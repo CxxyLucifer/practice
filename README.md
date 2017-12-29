@@ -1,4 +1,3 @@
-# shop
 
 框架使用 spring-boot + spring-data-jpa 构建，数据库使用的mysql8.0
 
