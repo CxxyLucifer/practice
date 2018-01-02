@@ -45,7 +45,7 @@ public class CorsAuthFilter implements Filter {
             PrintWriter out = response.getWriter();
 
             JSONObject json = new JSONObject();
-            json.put("not_auth", true);
+            json.put("unauthorize", true);
             json.put("message", "非法请求");
 
             out.append(json.toJSONString());
