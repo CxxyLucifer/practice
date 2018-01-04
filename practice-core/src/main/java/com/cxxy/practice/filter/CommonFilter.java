@@ -1,29 +1,27 @@
 package com.cxxy.practice.filter;
 
 import com.alibaba.fastjson.JSONObject;
+import com.cxxy.practice.filter.wrapper.ResponseWrapper;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Arrays;
-import java.util.Enumeration;
-import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * Author:liuhui
- * Description:
+ * Description: cors跨域请求处理、token过期处理、请求参数解密和返回值加密处理
  * Date: 下午6:07 2017/11/28
  */
-@WebFilter(filterName = "CorsAuthFilter", urlPatterns = {"/user/*", "/class/*"})
-public class CorsAuthFilter implements Filter {
+@WebFilter(filterName = "CommonFilter", urlPatterns = {"/user/*", "/class/*"})
+public class CommonFilter implements Filter {
+
+    @Value("${jwtKey}")
+    private String jwtKey;
 
     public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain) throws IOException, ServletException {
         HttpServletResponse response = (HttpServletResponse) res;
@@ -40,7 +38,30 @@ public class CorsAuthFilter implements Filter {
         response.setHeader("Access-Control-Allow-Headers", "Platform, Authorization, Origin, X-Requested-With, Content-Type, Accept");
 
         if (StringUtils.isNotEmpty(auth)) {
-            chain.doFilter(req, res);
+
+            ResponseWrapper wrapperResponse = new ResponseWrapper(response);//转换成代理类
+
+            chain.doFilter(request, wrapperResponse);
+
+            byte[] content = wrapperResponse.getContent();//获取返回值
+
+            if (content.length > 0) {
+                String str = new String(content, "UTF-8");
+                String ciphertext = null;
+                try {
+                    JSONObject json = JSONObject.parseObject(str);
+                    json.put("token", "2806e7e624204664a8c4f45500ff5499");
+
+                    ciphertext = json.toJSONString();
+
+                } catch (Exception e) {
+                    ciphertext = str;
+                    e.printStackTrace();
+                }
+                ServletOutputStream out = response.getOutputStream();
+                out.write(ciphertext.getBytes());
+                out.flush();
+            }
         } else {
             PrintWriter out = response.getWriter();
 
@@ -57,5 +78,4 @@ public class CorsAuthFilter implements Filter {
 
     public void destroy() {
     }
-
 }
