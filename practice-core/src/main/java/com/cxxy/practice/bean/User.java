@@ -12,7 +12,7 @@ import java.io.Serializable;
 @Table(name = "t_user")
 @NoArgsConstructor
 @AllArgsConstructor
-public class User implements Serializable{
+public class User implements Serializable {
 
     @Id
     @Column
@@ -32,7 +32,7 @@ public class User implements Serializable{
     private Long class_id;
 
     @ManyToOne
-    @JoinColumn(name = "class_id",referencedColumnName = "class_id",insertable = false,updatable = false)
+    @JoinColumn(name = "class_id", referencedColumnName = "class_id", insertable = false, updatable = false)
     private SClass sClass;
 
     @Transient

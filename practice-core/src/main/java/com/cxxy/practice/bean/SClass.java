@@ -8,6 +8,7 @@ import org.springframework.boot.jackson.JsonComponent;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
+
 /**
  * Author:liuhui
  * Description:
